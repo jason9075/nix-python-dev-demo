@@ -1,10 +1,10 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs, oldpkgs }:
 let
-  pythonEnv = pkgs.python3.withPackages (ps:
+  pythonEnv = oldpkgs.python3.withPackages (ps:
     with ps;
     [
       # Add your other Python packages here
-      opencv4
+      opencv3
     ]);
 in pkgs.mkShell {
   nativeBuildInputs = [ pythonEnv pkgs.python3Packages.virtualenv ];
